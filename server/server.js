@@ -14,3 +14,13 @@ var Todo = mongoose.model('Todo', {
     type: Number
   }
 });
+
+var newTodo = new Todo({
+  text: 'Cook Dinner'  
+});
+
+newTodo.save().then((doc) => {
+  console.log('Document saved successfully', doc);
+}, (e) => {
+  console.log('Unable to save the todo item');
+});
