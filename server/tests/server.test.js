@@ -85,4 +85,18 @@ describe('GET /todos/:id', () => {
       })
       .end(done);
   });  
+
+  it('sould return 404 status code when no id is found', (done) => {
+    request(app)
+      .get(`/todos/${new ObjectID().toHexString()}`)
+      .expect(404)
+      .end(done);
+  });
+
+  it('should return 404 when invalid id is passed', (done) => {
+    request(app)
+      .get('/todos/123')
+      .expect(404)
+      .end(done);
+  });
 });
